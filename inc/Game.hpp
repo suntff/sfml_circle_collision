@@ -1,29 +1,22 @@
 #pragma once
 #include <string>
-#include <Circle.hpp>
 #include <cmath>
+#include <vector> 
+#include <Circle.hpp>
 namespace msp
 {
-	class Game
-	{
-		int width;
-		int height;
-		std::string capture;
-		msp::Circle* crl;
-		int n;
-		float v;
-		float alfa;
-		const long double pi = acos(-1);
-		sf::RenderWindow window;
-	public:
-		Game(int width, int height, const std::string& capture);
-		Game(const Game& other);
-		Game& operator = (const Game& other);
-		float random(float min, float max);
-		void Setup_Circle();
-		void Touch_Border(Circle& obj);
-		void LifeCycle();
-		~Game();
-	};
+    class Game
+    {
+        std::vector<Circle> circles;
+        int width; int height; int n; std::string capture; float m1; float m2;
 
+    public:
+        Game(int width, int height, int n, const std::string& capture);
+        float random(float min, float max);
+        bool Are_too_near(const Circle& ball1, const Circle& ball2);
+        void Handling_collision(Circle& ball1, Circle& ball2);
+        void Circles_create();
+        void Circle_collision();
+        void LifeCycle();
+    };
 }
