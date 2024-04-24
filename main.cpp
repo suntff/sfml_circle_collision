@@ -1,13 +1,9 @@
-﻿#include <Circle.hpp>
+﻿#include <SFML/Graphics.hpp>
 #include <Game.hpp>
-#include <SFML/Graphics.hpp>
-int main()
-{
+#include <Circle.hpp>
+int main() {
     srand(time(0));
-    msp::Game game(1000, 600, "Game");
-    game.Setup_Circle();
-
+    msp::Game game(1000, 600,10, "Game");
     game.LifeCycle();
-
     return 0;
 }
