@@ -1,8 +1,4 @@
 #include <Game.hpp>
-#include <string>
-#include <thread>
-#include <chrono>
-#include <vector> 
 namespace msp
 {
     Game::Game(int width, int height, int n, const std::string& capture){
