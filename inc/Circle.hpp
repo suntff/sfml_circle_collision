@@ -14,7 +14,7 @@ namespace msp {
 			shape.setRadius(radius);
 			shape.setOrigin(radius, radius);
 			shape.setPosition(x, y);
-			shape.setFillColor(sf::Color::Red);
+			shape.setFillColor(sf::Color(rand() % 235 + 20, rand() % 235 + 20, rand() % 235 + 20, rand() % 240 + 15));
 
 		}
 		void update(float dt) {
