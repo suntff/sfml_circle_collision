@@ -14,9 +14,8 @@ namespace msp
         Game(int width, int height, int n, const std::string& capture);
         float random(float min, float max);
         bool Are_too_near(const Circle& ball1, const Circle& ball2);
-        void Handling_collision(Circle& ball1, Circle& ball2);
+        void Circle_collision(Circle& ball1, Circle& ball2);
         void Circles_create();
-        void Circle_collision();
         void LifeCycle();
     };
 }
