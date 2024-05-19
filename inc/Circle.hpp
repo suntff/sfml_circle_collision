@@ -6,11 +6,10 @@ namespace msp {
 		float x; float y;
 	};
 	class Circle {
-		float x; float y; sf::CircleShape shape; int width; int height;
-		sf::Vector2f velocity;
+		float x; float y; sf::CircleShape shape; int width; int height;float vx; float vy;
 	public:
-		Circle(float x, float y, float vx, float vy, float radius,int width,int height) : velocity(vx, vy), width(width), height(height) {
-			this->x = x; this->y = y;
+		Circle(float x, float y, float vx, float vy, float radius, int width, int height) {
+			this->x = x; this->y = y; this->vx = vx; this->vy = vy; this->width = width; this->height = height;
 			shape.setRadius(radius);
 			shape.setOrigin(radius, radius);
 			shape.setPosition(x, y);
@@ -18,26 +17,21 @@ namespace msp {
 
 		}
 		void update(float dt) {
-			shape.move(velocity * dt);
+			shape.move(vx * dt,vy*dt);
 
 			if (shape.getPosition().x - shape.getRadius() < 0 || shape.getPosition().x + shape.getRadius() > width) {
-				velocity.x *= -1;
+				vx *= -1;
 			}
 
 			if (shape.getPosition().y - shape.getRadius() < 0 || shape.getPosition().y + shape.getRadius() > height) {
-				velocity.y *= -1;
+				vy *= -1;
 			}
 		}
-		sf::CircleShape Circle::Get(){
+		const sf::CircleShape Circle::Get() const{
 			return shape;
 		}
-		sf::Vector2f& Velocity(){
-			return velocity;};
-		const sf::Vector2f& Circle::getPosition() const {
-			return shape.getPosition();
-		}
-		float	Circle::getRadius() const {
-			return shape.getRadius();
-		}
+		float Vx() { return vx; }; float Vy() { return vy; };
+		void Vx(float value) { vx = value; }; void Vy(float value) { vy = value; };
+
 	};
 }
